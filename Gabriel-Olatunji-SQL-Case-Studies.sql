@@ -198,9 +198,9 @@ AS
 (
 	SELECT customer_id, order_date, product_name, price, 
 		CASE
-			WHEN join_date IS NULL
-				THEN 'N'
-			ELSE 'Y'
+			WHEN order_date >= join_date
+				THEN 'Y'
+			ELSE 'N'
 		END is_customer_member
 	From sale_menu_members
 )
